@@ -1,5 +1,5 @@
 {
-  "name": "URL rewriter",
+  "name": "Host name rewriter",
   "manifest_version": 2,
   "version": "1.0.0",
   "description": "Rewrite URLs for using a different host when accessing a web page.",
@@ -7,10 +7,17 @@
   "permissions": [
     "storage"
   ],
-  "content_scripts": [
-    {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["rewrite.js"]
-    }
-  ]
+  "icons": {
+    "16": "icon16.png",
+    "64": "icon64.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["rewrite.js"]
+  }],
+  "background": {
+    "scripts": ["event.js"],
+    "persistent": false
+  }
 }

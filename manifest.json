@@ -1,0 +1,16 @@
+{
+  "name": "URL rewriter",
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "description": "Rewrite URLs for using a different host when accessing a web page.",
+  "options_page": "options.html",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["rewrite.js"]
+    }
+  ]
+}

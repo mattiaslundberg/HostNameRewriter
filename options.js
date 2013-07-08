@@ -44,7 +44,13 @@ function save_options() {
 		var row = rows[i].children;
 		store[row[0].firstChild.value] = row[1].firstChild.value;
 	};
-	console.debug(store);
+	chrome.storage.sync.get(function(items) {
+		for (key in items) {
+			if (!store.hasOwnProperty(key)) {
+				chrome.storage.sync.remove(key);
+			}
+		}
+	});
 	chrome.storage.sync.set(store);
 }
 document.addEventListener('DOMContentLoaded', restore_options);

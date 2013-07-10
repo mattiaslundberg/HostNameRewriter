@@ -14,10 +14,6 @@
     "64": "icon64.png",
     "128": "icon128.png"
   },
-  "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
-    "js": ["rewrite.js"]
-  }],
   "background": {
     "scripts": ["event.js"],
     "persistent": false

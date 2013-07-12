@@ -18,10 +18,5 @@ chrome.webNavigation.onBeforeNavigate.addListener(function(event) {
 });
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-	var runOn = new RegExp("^(http[s]?\:\/\/)\.*$", "i");
-	if (tab.url.match(runOn)) {
-		// Create and display the action
-	} else {
-		// PASS
-	}
+	chrome.browserAction.setPopup({popup: "action.html"});
 });

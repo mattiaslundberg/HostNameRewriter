@@ -31,8 +31,6 @@ function save_options() {
 		var protore = new RegExp("^(http[s]?\:\/\/)\.*$", "i");
 		var urire = new RegExp("^http[s]?\:\/\/[^\/]*(\/.*)$", "i");
 		var url = tab.url.match(protore)[1] + to + tab.url.match(urire)[1];
-		// chrome.browserAction.setPopup({popup: ""});
-		window.close();
 		chrome.tabs.update(tab.id, {url: url});
 	});
 }

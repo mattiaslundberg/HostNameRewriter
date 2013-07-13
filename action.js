@@ -3,6 +3,8 @@ chrome.tabs.getSelected(function(tab) {
 	
 	chrome.storage.sync.get(function(items) {
 		var found = false;
+		document.querySelector("#to").onkeypress = on_key_press;
+		document.querySelector("#from").onkeypress = on_key_press;
 		for (from in items) {
 			var reto = new RegExp("^http[s]?\:\/\/" + items[from] + "\/\.*$", "i");
 			if (tab.url.match(reto)) {
@@ -20,6 +22,11 @@ chrome.tabs.getSelected(function(tab) {
 		fromBox.disabled = true;
 	});
 });
+
+function on_key_press(event) {
+	if (event.keyCode == 13)
+		save_options();
+}
 
 function save_options() {
 	var from = document.getElementById("from").value;

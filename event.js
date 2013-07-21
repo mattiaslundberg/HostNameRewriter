@@ -1,23 +1,20 @@
 chrome.webNavigation.onBeforeNavigate.addListener(function(event) {
-	chrome.storage.sync.get(function(items) {
-		for (from in items) {
-			var runOn = new RegExp("^http[s]?\:\/\/" + from + "\/\.*$", "i");
-			if (event.url.match(runOn)) {
-				chrome.tabs.get(event.tabId, function(tab) {
-					if (tab.url == event.url) { // Only update if main
-						var protore = new RegExp("^(http[s]?\:\/\/)\.*$", "i");
-						var urire = new RegExp("^http[s]?\:\/\/[^\/]*(\/.*)$", "i");
-						var url = event.url.match(protore)[1] + items[from] + event.url.match(urire)[1];
-						chrome.tabs.update(event.tabId, {url: url});
-					}
-				});
-				break;
-			}
+	var regex = /^(http[s]?\:\/\/)([^\/]*)(\/.*)$/i;
+	var match = event.url.match(regex);
+	if (match == undefined || match == null || match.length != 4)
+		return;
+	chrome.storage.sync.get(match[2], function(item) {
+		if (item.hasOwnProperty(match[2])) {
+			chrome.tabs.get(event.tabId, function(tab) {
+				if (tab.url == event.url) {
+					chrome.tabs.update(event.tabId, {url: match[1] + item[match[2]] + match[3]});
+				}
+			});
 		}
 	});
 });
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-	if (!tab.url.match(new RegExp("^http[s]?\:\/\/"))) { return; }
+	if (!tab.url.match(/^http[s]?\:\/\//)) { return; }
 	chrome.browserAction.setPopup({popup: "action.html"});
 });

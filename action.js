@@ -1,13 +1,15 @@
+var regex = /^(http[s]?\:\/\/)([^\/]*)(\/.*)$/i;
+
 chrome.tabs.getSelected(function(tab) {
 	var fromBox = document.getElementById("from");
-	
+
 	chrome.storage.sync.get(function(items) {
 		var found = false;
 		document.querySelector("#to").onkeypress = on_key_press;
 		document.querySelector("#from").onkeypress = on_key_press;
-		for (from in items) {
-			var reto = new RegExp("^http[s]?\:\/\/" + items[from] + "\/\.*$", "i");
-			if (tab.url.match(reto)) {
+		var match = tab.url.match(regex);
+		for (var from in items) {
+			if (match[2] == items[from]) {
 				document.getElementById("information").innerHTML = "Current rule:";
 				fromBox.value = from;
 				document.getElementById("to").value = items[from];
@@ -17,7 +19,7 @@ chrome.tabs.getSelected(function(tab) {
 		}
 		if (!found) {
 			document.getElementById("information").innerHTML = "Add rule:";
-			fromBox.value = tab.url.match(new RegExp("^http[s]?\:\/\/([^\/]*)\/\.*$", "i"))[1];
+			fromBox.value = match[2];
 		}
 		fromBox.disabled = true;
 	});
@@ -35,10 +37,8 @@ function save_options() {
 	store[from] = to;
 	chrome.storage.sync.set(store);
 	chrome.tabs.getSelected(function(tab) {
-		var protore = new RegExp("^(http[s]?\:\/\/)\.*$", "i");
-		var urire = new RegExp("^http[s]?\:\/\/[^\/]*(\/.*)$", "i");
-		var url = tab.url.match(protore)[1] + to + tab.url.match(urire)[1];
-		chrome.tabs.update(tab.id, {url: url});
+		var match = tab.url.match(regex);
+		chrome.tabs.update(tab.id, {url: match[1] + to + match[3]});
 	});
 }
 

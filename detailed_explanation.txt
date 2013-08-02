@@ -1,0 +1,7 @@
+Extension for rewriting of host names when accessing a webpage. Will rewrite the host name regardless of method of access, both clicking a link and writing URL will work.
+
+Usage example: Attempts to reach 'example.com/something' will be redirected to 'mydomain.com/something'.
+
+A sub domain, 'sub.example.com', will not be rewritten if a rule for 'example.com' is present. A specific rule for 'sub.example.com' needs to be added.
+
+The extension needs to be configured on the options page before it does anything.

@@ -4,4 +4,9 @@ Usage example: Attempts to reach 'example.com/something' will be redirected to '
 
 A sub domain, 'sub.example.com', will not be rewritten if a rule for 'example.com' is present. A specific rule for 'sub.example.com' needs to be added.
 
-The extension needs to be configured on the options page before it does anything.
+The extension needs to be configured from the extension button or options page before starting to work.
+
+Version History
+* 1.1.0 - Better performance and interface
+* 1.0.1 - Fix installation
+* 1.0.0 - Initial release

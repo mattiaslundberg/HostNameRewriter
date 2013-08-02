@@ -1,6 +1,6 @@
 function restore_options() {
 	chrome.storage.sync.get(function(items) {
-		for (key in items) {
+		for (var key in items) {
 			var item = items[key];
 			add_row(null, key, item);
 		}
@@ -18,16 +18,16 @@ function add_row(event, original, target) {
 	el.type = "text";
 	el.value = typeof original !== 'undefined' ? original : "";
 	cell.appendChild(el);
-	
+
 	cell = row.insertCell(1);
 	el = document.createElement("input");
 	el.type = "text";
 	el.value = typeof target !== 'undefined' ? target : "";
 	cell.appendChild(el);
-	
+
 	cell = row.insertCell(2);
 	el = document.createElement("button");
-	el.addEventListener('click', del_row)
+	el.addEventListener('click', del_row);
 	el.innerHTML = "Remove";
 	el.id = "row" + rowCount;
 	cell.appendChild(el);
@@ -43,9 +43,9 @@ function save_options() {
 	for (var i = rows.length - 1; i >= 0; i--) {
 		var row = rows[i].children;
 		store[row[0].firstChild.value] = row[1].firstChild.value;
-	};
+	}
 	chrome.storage.sync.get(function(items) {
-		for (key in items) {
+		for (var key in items) {
 			if (!store.hasOwnProperty(key)) {
 				chrome.storage.sync.remove(key);
 			}

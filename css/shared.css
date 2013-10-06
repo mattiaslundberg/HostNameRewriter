@@ -1,0 +1,33 @@
+/* Make input fields nicer */
+input[type="text"] {
+	padding: 5px;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	box-shadow: 0 0 2px #DDDDDD;
+}
+
+input[type="text"]:hover {
+	border:1px solid #CCCCCC;
+}
+
+input[type="text"]:focus {
+	box-shadow:0 0 2px #FFFE00;
+}
+
+/* Make buttons nicer */
+button {
+	padding: 5px;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	box-shadow: 0 0 2px #DDDDDD;
+	color: #000000;
+	background-color: #CCCCCC;
+}
+
+button:hover {
+	border:1px solid #CCCCCC;
+}
+
+.control {
+	margin-left: 10px;
+}

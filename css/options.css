@@ -1,9 +1,19 @@
+body {
+	margin: 0;
+	background-color: #ECECEC;
+	font-family: arial;
+}
+
+h1 {
+	margin: 10px;
+}
 
 /* Styling of url table */
 table#urls {
 	width: 396px;
 	margin: 0;
 	padding: 2px;
+	margin: 5px;
 	font-family: arial;
 }
 

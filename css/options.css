@@ -1,0 +1,58 @@
+
+/* Styling of url table */
+table#urls {
+	width: 396px;
+	margin: 0;
+	padding: 2px;
+	font-family: arial;
+}
+
+table#urls > thead {
+	font-weight: bold;
+}
+
+table#urls > thead > tr > td {
+	width: 159px;
+}
+
+table#urls > thead > tr > td:last-child {
+	width: 70px;
+}
+
+table#urls > tbody > tr > td {
+	width: 159px;
+}
+
+table#urls > tbody > tr > td:last-child {
+	width: 70px;
+}
+
+/* Make input fields nicer */
+input[type="text"] {
+	padding: 5px;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	box-shadow: 0 0 2px #DDDDDD;
+}
+
+input[type="text"]:hover {
+	border:1px solid #CCCCCC;
+}
+
+input[type="text"]:focus {
+	box-shadow:0 0 2px #FFFE00;
+}
+
+/* Make buttons nicer */
+button {
+	padding: 5px;
+	border: 1px solid #DDDDDD;
+	border-radius: 3px;
+	box-shadow: 0 0 2px #DDDDDD;
+	color: #000000;
+	background-color: #CCCCCC;
+}
+
+button:hover {
+	border:1px solid #CCCCCC;
+}

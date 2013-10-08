@@ -73,6 +73,32 @@ function del_row(event) {
 	show_message("success", "Successfully removed", "The removed rewrite rule have been successfully removed.", 5);
 }
 
+function del_key(key) {
+	var rows = document.getElementById("urls").children[1].children;
+	for (var i = rows.length - 1; i >= 0; i--) {
+		if (key === rows[i].firstChild.firstChild.value)
+			rows[i].parentNode.removeChild(rows[i]);
+	}
+}
+
+function row_for_key(key) {
+	var rows = document.getElementById("urls").children[1].children, val;
+	for (var i = rows.length - 1; i >= 0; i--) {
+		var row = rows[i].children;
+		if (key === row[0].firstChild.value)
+			return row[0].firstChild.value;
+	}
+	return val;
+}
+
+function update_value(key, newValue) {
+	var rows = document.getElementById("urls").children[1].children;
+	for (var i = rows.length - 1; i >= 0; i--) {
+		if (key == rows[i].firstChild.firstChild.value)
+			rows[i].children[1].firstChild.value = newValue;
+	}
+}
+
 function save_options() {
 	var rows = document.getElementById("urls").children[1].children;
 	var store = {};
@@ -91,6 +117,22 @@ function save_options() {
 	show_message("success", "Successfully saved", "The entered rewrite rules are successfully saved.", 5);
 }
 
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+	if (namespace === "local") // Local namespace is not used.
+		return;
+	for (key in changes) {
+		var storageChange = changes[key];
+		
+		if (storageChange.oldValue === undefined && row_for_key(key) !== undefined) { // New rule
+			add_row(null, key, storageChange.newValue);
+		}
+		
+		if (storageChange.newValue === undefined) // Rule removed
+			del_key(key);
+		
+		update_value(key, storageChange.newValue);
+	}
+});
 
 document.addEventListener('DOMContentLoaded', restore_options);
 document.querySelector('#save').addEventListener('click', save_options);

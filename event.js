@@ -1,5 +1,6 @@
-chrome.webNavigation.onBeforeNavigate.addListener(function(event) {
-	var regex = /^(http[s]?\:\/\/)([^\/]*)(\/.*)$/i;
+var regex = /^(http[s]?\:\/\/)([^\/]*)(\/.*)$/i;
+
+function renavigate(event) {
 	var match = event.url.match(regex);
 	if (match === undefined || match === null || match.length != 4)
 		return;
@@ -12,7 +13,9 @@ chrome.webNavigation.onBeforeNavigate.addListener(function(event) {
 			});
 		}
 	});
-});
+}
+
+chrome.webNavigation.onBeforeNavigate.addListener(renavigate);
 
 chrome.browserAction.onClicked.addListener(function(tab) {
 	if (!tab.url.match(/^http[s]?\:\/\//)) { return; }

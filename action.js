@@ -1,7 +1,7 @@
 var regex = /^(http[s]?\:\/\/)([^\/]*)(\/.*)$/i;
 
 chrome.tabs.getSelected(function(tab) {
-	var fromBox = document.getElementById("from");
+	var from_box = document.getElementById("from");
 
 	chrome.storage.sync.get(function(items) {
 		var found = false;
@@ -12,7 +12,7 @@ chrome.tabs.getSelected(function(tab) {
 			if (match[2] == items[from]) {
 				document.getElementById("information").innerHTML = "Current rule:";
 				document.getElementById("remove").style["display"] = "";
-				fromBox.value = from;
+				from_box.value = from;
 				document.getElementById("to").value = items[from];
 				found = true;
 				break;
@@ -21,9 +21,9 @@ chrome.tabs.getSelected(function(tab) {
 		if (!found) {
 			document.getElementById("information").innerHTML = "Add rule:";
 			document.getElementById("remove").style["display"] = "none";
-			fromBox.value = match[2];
+			from_box.value = match[2];
 		}
-		fromBox.disabled = true;
+		from_box.disabled = true;
 	});
 });
 

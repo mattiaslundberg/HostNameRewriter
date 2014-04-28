@@ -6,7 +6,7 @@ function hide_message() {
 	top.style["margin-top"] = 0;
 	var message = document.getElementById("message");
 	message.innerHTML = "";
-	message.style["top"] = "-160px";
+	message.style.top = "-160px";
 	message.className = "";
 }
 
@@ -22,7 +22,7 @@ function show_message(type, header, text, time) {
 	t.innerHTML = text;
 	message.appendChild(t);
 	message.className = type;
-	message.style["top"] = "0";
+	message.style.top = "0";
 	hide_timeout = setTimeout(function() { hide_message(); }, time * 1000);
 }
 
@@ -120,7 +120,7 @@ function save_options() {
 chrome.storage.onChanged.addListener(function(changes, namespace) {
 	if (namespace === "local") // Local namespace is not used.
 		return;
-	for (key in changes) {
+	for (var key in changes) {
 		var storageChange = changes[key];
 		
 		if (storageChange.oldValue === undefined && row_for_key(key) !== undefined) // New rule

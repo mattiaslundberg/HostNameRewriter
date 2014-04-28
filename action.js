@@ -20,7 +20,7 @@ chrome.tabs.getSelected(function(tab) {
 		}
 		if (!found) {
 			document.getElementById("information").innerHTML = "Add rule:";
-			document.getElementById("remove").style["display"] = "none";
+			document.getElementById("remove").style.display = "none";
 			from_box.value = match[2];
 		}
 		from_box.disabled = true;

@@ -11,7 +11,7 @@ chrome.tabs.getSelected(function(tab) {
 		for (var from in items) {
 			if (match[2] == items[from]) {
 				document.getElementById("information").innerHTML = "Current rule:";
-				document.getElementById("remove").style["display"] = "";
+				document.getElementById("remove").style.display = "";
 				from_box.value = from;
 				document.getElementById("to").value = items[from];
 				found = true;

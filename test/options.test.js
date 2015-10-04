@@ -13,7 +13,7 @@ describe('options page', function() {
             });
         };
 
-        page.open(PATH, function(r) {
+        page.open(PATH, function() {
             // Empty input loaded
             page.evaluate(function() {
                 assert.equal(
@@ -45,8 +45,7 @@ describe('options page', function() {
             });
         };
 
-        page.open(PATH, function(r) {
-            // Empty input loaded
+        page.open(PATH, function() {
             page.evaluate(function() {
                 var rows = document.getElementById("urls").children[1].children;
                 assert.equal(rows.length, 1);

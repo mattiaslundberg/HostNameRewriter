@@ -48,9 +48,19 @@ describe('options page', function() {
         page.open(PATH, function(r) {
             // Empty input loaded
             page.evaluate(function() {
+                var rows = document.getElementById("urls").children[1].children;
+                assert.equal(rows.length, 1);
+
+                var row = rows[0];
+
                 assert.equal(
-                    document.querySelector('input').value,
-                    ''
+                    row.children[0].firstChild.value,
+                    'fromdomain.com'
+                );
+
+                assert.equal(
+                    row.children[1].firstChild.value,
+                    'todomain.com'
                 );
             });
 

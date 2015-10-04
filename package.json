@@ -1,9 +1,17 @@
 {
   "name": "HostNameRewriter",
   "version": "0.1.0",
+  "scripts": {
+    "test": "node_modules/.bin/phantomjs test/run.js"
+  },
   "dependencies": {
-    "grunt": "^0.4.2",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-lint-inline": "~0.4.0"
+    "grunt": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-lint-inline": "*",
+    "sinon-chrome": "*",
+    "mocha": "*",
+    "chai": "*",
+    "phantomjs": "*",
+    "sinon": "*"
   }
 }

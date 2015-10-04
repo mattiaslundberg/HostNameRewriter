@@ -6,3 +6,4 @@ before_script:
 install: npm install
 script:
     - grunt jshint
+    - npm test

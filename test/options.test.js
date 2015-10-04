@@ -1,7 +1,6 @@
 describe('options page', function() {
     this.timeout(5000);
 
-    var FILE = 'test/empty.html';
     var PATH = 'options.html';
 
     it('should show empty input and help on first load', function(done) {

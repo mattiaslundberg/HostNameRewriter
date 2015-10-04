@@ -4,25 +4,58 @@ describe('options page', function() {
     var FILE = 'test/empty.html';
     var PATH = 'options.html';
 
-    it('should not show anything on first load', function(done) {
-        var chrome = require('sinon-chrome');
-
+    it('should show empty input and help on first load', function(done) {
         beforeLoadFunction = function() {
             page.evaluate(function() {
                 chrome.storage.sync.get = function(cb) {
-                    cb([]);
+                    cb({});
                 };
             });
         };
 
         page.open(PATH, function(r) {
+            // Empty input loaded
             page.evaluate(function() {
                 assert.equal(
                     document.querySelector('input').value,
                     ''
                 );
             });
+
+            // Top bar shown
+            page.evaluate(function() {
+                assert.equal(
+                    document.querySelector('#message h3').innerText,
+                    'No rewrite rules added'
+                );
+            });
+
             done();
         });
+    });
+
+    it('should load saved rewrites', function(done) {
+        beforeLoadFunction = function() {
+            page.evaluate(function() {
+                chrome.storage.sync.get = function(cb) {
+                    cb({
+                        'fromdomain.com': 'todomain.com'
+                    });
+                };
+            });
+        };
+
+        page.open(PATH, function(r) {
+            // Empty input loaded
+            page.evaluate(function() {
+                assert.equal(
+                    document.querySelector('input').value,
+                    ''
+                );
+            });
+
+            done();
+        });
+
     });
 });

@@ -65,6 +65,29 @@ describe('options page', function() {
 
             done();
         });
+    });
 
+    it('should save to storage', function() {
+        page.open(PATH, function() {
+            page.evaluate(function() {
+                var rows = document.getElementById("urls").children[1].children;
+                assert.equal(rows.length, 1);
+
+                var row = rows[0];
+
+                row.children[0].firstChild.value = 'fromdomain.com';
+                row.children[1].firstChild.value = 'todomain.com';
+
+                document.querySelector('#add_url').click();
+
+                assert.calledOnce(chrome.storage.sync.set);
+                assert.calledOnceWithMatch(
+                    chrome.storage.sync.set,
+                    {'fromdomain.com': 'todomain.com'}
+                );
+            });
+
+            done();
+        });
     });
 });

@@ -122,13 +122,13 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 		return;
 	for (var key in changes) {
 		var storageChange = changes[key];
-		
-		if (storageChange.oldValue === undefined && row_for_key(key) !== undefined) // New rule
+
+		if (storageChange.oldValue === undefined && row_for_key(key) === undefined) // New rule
 			add_row(null, key, storageChange.newValue);
-		
+
 		if (storageChange.newValue === undefined) // Rule removed
 			del_key(key);
-		
+
 		update_value(key, storageChange.newValue);
 	}
 });

@@ -2,8 +2,10 @@ var regex = /^(http[s]?\:\/\/)([^\/]*)(\/.*)$/i;
 
 function renavigate(event) {
 	var match = event.url.match(regex);
-	if (match === undefined || match === null || match.length != 4)
+	if (match === undefined || match === null || match.length != 4) {
 		return;
+	}
+
 	chrome.storage.sync.get(match[2], function(item) {
 		if (item.hasOwnProperty(match[2])) {
 			chrome.tabs.get(event.tabId, function(tab) {

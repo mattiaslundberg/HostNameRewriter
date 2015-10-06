@@ -79,8 +79,8 @@ describe('options page', function() {
 
                 document.querySelector('#add_url').click();
 
-                assert.calledOnce(chrome.storage.sync.set);
-                assert.calledOnceWithMatch(
+                sinon.assert.calledOnce(chrome.storage.sync.set);
+                sinon.assert.calledWith(
                     chrome.storage.sync.set,
                     {'fromdomain.com': 'todomain.com'}
                 );

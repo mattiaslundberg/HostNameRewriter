@@ -20,6 +20,8 @@ function renavigate(event) {
 chrome.webNavigation.onBeforeNavigate.addListener(renavigate);
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-    if (!tab.url.match(/^http[s]?\:\/\//)) { return; }
-            chrome.browserAction.setPopup({popup: "action.html"});
+    if (!tab.url.match(/^http[s]?\:\/\//)) {
+        return;
+    }
+    chrome.browserAction.setPopup({popup: "action.html"});
 });

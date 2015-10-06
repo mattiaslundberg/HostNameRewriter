@@ -28,8 +28,9 @@ chrome.tabs.getSelected(function(tab) {
 });
 
 function on_key_press(event) {
-    if (event.keyCode == 13)
+    if (event.keyCode == 13) {
         save_options();
+    }
 }
 
 function remove_rewrite() {

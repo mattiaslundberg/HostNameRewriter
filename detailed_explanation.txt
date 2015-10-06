@@ -7,6 +7,7 @@ A sub domain, 'sub.example.com', will not be rewritten if a rule for 'example.co
 The extension needs to be configured from the extension button or options page before starting to work.
 
 Version History
+* 1.2.1 - Sync changes between options and action.
 * 1.2.0 - Improvements of interface and usability
 * 1.1.0 - Improve performance and interface
 * 1.0.1 - Fix installation

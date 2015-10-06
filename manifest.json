@@ -1,7 +1,7 @@
 {
     "name": "Host name rewriter",
     "manifest_version": 2,
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Rewrite URLs for using a different host when accessing a web page.",
     "options_page": "options.html",
     "permissions": [

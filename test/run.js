@@ -5,6 +5,7 @@ mocha.setup({ui: 'bdd', reporter: 'spec'});
 
 phantom.injectJs('setUp.js');
 
+phantom.injectJs('action.test.js');
 phantom.injectJs('event.test.js');
 phantom.injectJs('options.test.js');
 

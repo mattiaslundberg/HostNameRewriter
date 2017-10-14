@@ -19,6 +19,7 @@
     }
 
     chrome.webNavigation.onBeforeNavigate.addListener(renavigate);
+    chrome.webNavigation.onCommitted.addListener(renavigate);
 
     chrome.browserAction.onClicked.addListener(function(tab) {
         if (!tab.url.match(/^http[s]?\:\/\//)) {

@@ -21,3 +21,12 @@ Example: Attempting to reach 'example.com/something' will always be redirected t
  - Check the box "Developer mode" near the top of the page
  - Click "Load unpacked extension" and locate the project root
  - Open extension options to configure and get started with testing
+
+## Release new version
+
+ - Update version in `manifest.json` and `package.json`
+ - Commit the change
+ - Tag the commit `git commit -a vX.Y.Z -m "vX.Y.Z"`
+ - Push the change `git push --tags`
+ - Create a zip-file with the new release: `zip -r release.zip images/ Gruntfile.js action.js event.js options.js manifest.json package-lock.json package.json action.html options.html css`
+ - Upload `release.zip` to the developer dashboard

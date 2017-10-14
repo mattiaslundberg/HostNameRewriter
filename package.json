@@ -1,6 +1,6 @@
 {
   "name": "HostNameRewriter",
-  "version": "0.1.0",
+  "version": "1.3.0",
   "scripts": {
     "test": "node_modules/.bin/phantomjs test/run.js"
   },
